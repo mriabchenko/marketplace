@@ -1,5 +1,6 @@
 <template>
   <div class="page page_hello">
+    <img src="./../assets/logo.png">
     <h1>{{ msg }}</h1>
     <h2>Pages</h2>
     <ul>
