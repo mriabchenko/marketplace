@@ -13,6 +13,7 @@
 </template>
 
 <script>
+console.log('Hello.vue is loaded');
 export default {
   name: 'hello',
   data () {
