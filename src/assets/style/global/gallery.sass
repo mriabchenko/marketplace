@@ -1,0 +1,18 @@
+.gallery
+  height: 100%
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  &__image
+    max-height: 100%
+    max-width: 100%
+    object-fit: contain
+  &__button
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    &_prev
+      left: 0
+    &_next
+      right: 0

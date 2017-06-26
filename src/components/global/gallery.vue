@@ -1,30 +1,43 @@
 <template>
   <section class="gallery">
-      <div class="col-md-12 image-wrap" v-for="image in images">
-        <div class="image" :style="{ backgroundImage: 'url(' + image + ')' }">
-        </div>
-      </div>
-      <button class="button__back button__back-transparent" @click="navigateBack">{{button_back}}</button>
-    </div>
+    <img
+      class="gallery__image"
+      :src="images[currentImage].src"
+      :alt="images[currentImage].alt">
+    <button class="gallery__button gallery__button_prev" @click="currentImage--"><-</button>
+    <button class="gallery__button gallery__button_next" @click="currentImage++">-></button>
   </section>
 </template>
 <script>
-  import pagination from './pagination.vue';
-  import block_image from '../global/image_block.vue'
   export default {
-    props: {
-      images: {
-        type: Array,
-        required: true
-      },
-      items: {
-        type: Object,
-      },
-      button_back: ''
+  	data(){
+  		return {
+  			currentImage: 0
+			}
     },
-    components: {
-      appBlockImage: block_image
+    props: {
+			images: {
+				type: Array,
+				required: true
+			},
+      startFrom: {
+				type: Number,
+        default: 0
+      }
+		},
+    methods: {
+  		init(){
+  			this.currentImage = this.startFrom;
+      }
+    },
+    watch:{
+  		currentImage(v){
+  			if (v < 0) this.currentImage = this.images.length - 1
+        if (v > this.images.length - 1) this.currentImage = 0
+      }
+    },
+    mounted(){
+			this.init();
     }
   }
 </script>
-<style lang="sass" src="./../../assets/style/global__gallery.sass"></style>
