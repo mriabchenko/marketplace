@@ -6,7 +6,8 @@
     <h1>{{ msg }}</h1>
     <h2>Странички</h2>
     <ul>
-      <router-link to="/home">Главная</router-link>
+      <router-link tag="li" to="/home">Главная</router-link>
+      <router-link tag="li" to="/product">Карточка товара</router-link>
     </ul>
   </div>
 </template>

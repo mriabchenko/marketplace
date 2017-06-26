@@ -1,0 +1,31 @@
+.modal
+  position: fixed
+  height: 80vh
+  width: 80vw
+  top: 5vh
+  left: 10vw
+  background-color: white
+  border: 1px solid black
+  z-index: 999
+  &__content
+    height: 100%
+  &__close
+    position: absolute
+    padding: 5vh
+    top: 0
+    right: 0
+    z-index: 999
+    border: 0
+    background: transparent
+    &:focus
+      outline: none
+    &:hover
+      .svg-close
+        transform: rotate(90deg)
+        @extend .transition
+    .svg-close
+      width: 25px
+      height: 25px
+      transition: transform .3s ease-in
+      &__line
+        fill: black
