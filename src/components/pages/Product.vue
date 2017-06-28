@@ -15,7 +15,7 @@ import gallery from './../global/gallery.vue'
 export default {
   data () {
     return {
-			galleryModalIsOpen: false,
+			galleryModalIsOpen: true,
       galleryImages: [
         {src: '/static/images/1.jpg', alt: 'car 1'},
         {src: '/static/images/2.jpg', alt: 'car 2'},

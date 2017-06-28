@@ -6,9 +6,14 @@
       :alt="images[currentImage].alt">
     <button class="gallery__button gallery__button_prev" @click="currentImage--"><-</button>
     <button class="gallery__button gallery__button_next" @click="currentImage++">-></button>
+    <pagination
+      :itemsNumber="images.length"
+      :activeItem="currentImage"
+    ></pagination>
   </section>
 </template>
 <script>
+  import pagination from './pagination.vue'
   export default {
   	data(){
   		return {
@@ -38,6 +43,9 @@
     },
     mounted(){
 			this.init();
+    },
+    components: {
+    	pagination
     }
   }
 </script>
