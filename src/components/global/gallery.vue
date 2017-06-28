@@ -6,9 +6,11 @@
       :alt="images[currentImage].alt">
     <button class="gallery__button gallery__button_prev" @click="currentImage--"><-</button>
     <button class="gallery__button gallery__button_next" @click="currentImage++">-></button>
-    <pagination
-      :itemsNumber="images.length"
-      :activeItem="currentImage"
+    <pagination v-if="pagination"
+      :itemsNumber = "images.length"
+      :activeItem = "currentImage"
+      @pick="currentImage = $event"
+      :thumbnails="thumbnails"
     ></pagination>
   </section>
 </template>
@@ -28,6 +30,13 @@
       startFrom: {
 				type: Number,
         default: 0
+      },
+      pagination: {
+				type: Boolean,
+        default: true
+      },
+      thumbnails: {
+				type: Array
       }
 		},
     methods: {
