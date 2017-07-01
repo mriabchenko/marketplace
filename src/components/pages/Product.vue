@@ -1,5 +1,8 @@
 <template>
   <div class="page page_product">
+    <pictureLouped
+      :image="galleryImages[0]"
+    ></pictureLouped>
     <button @click="galleryModalIsOpen = true">Open gallery modal</button>
     <modal v-if="galleryModalIsOpen" @close="galleryModalIsOpen = false">
       <gallery
@@ -13,10 +16,11 @@
 <script>
 import modal from './../global/modal'
 import gallery from './../global/gallery.vue'
+import pictureLouped from './../global/picture_louped.vue'
 export default {
   data () {
     return {
-			galleryModalIsOpen: true,
+			galleryModalIsOpen: false,
       galleryImages: [
         {src: '/static/images/1.jpg', alt: 'car 1'},
         {src: '/static/images/2.jpg', alt: 'car 2'},
@@ -41,7 +45,8 @@ export default {
   },
   components: {
   	modal,
-    gallery
+    gallery,
+    pictureLouped,
   }
 }
 </script>
