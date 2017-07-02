@@ -1,6 +1,6 @@
 # marketplace
 
-> marketplace vuejs frontend
+> marketplace client side
 
 ## Build Setup
 

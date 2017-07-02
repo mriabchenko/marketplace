@@ -19,6 +19,7 @@
       <div
         class="picture_louped__louped"
         title="image.alt"
+        v-if="showLoupedArea"
         :style="loupedPictureStyle"
       ></div>
     </div>
