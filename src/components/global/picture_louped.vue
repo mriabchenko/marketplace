@@ -4,6 +4,8 @@
       <img
         ref="origin"
         @mousemove="handleMouse"
+        @mouseenter="showLoupedArea = true"
+        @mouseleave="showLoupedArea = false"
         class="picture_louped__origin"
         :src="image.src"
         :alt="image.alt">
@@ -20,7 +22,7 @@
   export default {
   	data(){
   		return {
-  			showLoupedArea: true,
+  			showLoupedArea: false,
   			origin: {
   				height: undefined,
           width: undefined,
