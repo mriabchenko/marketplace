@@ -1,12 +1,21 @@
 .picture_louped
+  display: flex
   &__wrapper
     position: relative
-    display: inline-block
   .louped-area
     position: absolute
     border: 1px solid white
     background-color: rgba(255, 255, 255, 0.4)
     pointer-events: none
     box-sizing: border-box
+  &__origin
+    float: left
   &__louped
     display: inline-block
+    position: absolute
+    background-color: red
+    height: 100%
+    width: 100%
+    top: 0
+    left: calc(100% + 10px)
+    background-repeat: no-repeat
