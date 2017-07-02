@@ -1,11 +1,16 @@
 <template>
   <div class="picture_louped">
     <div class="picture_louped__wrapper">
-      <img @mousemove="handleMouse"
+      <img
+        ref="origin"
+        @mousemove="handleMouse"
         class="picture_louped__origin"
         :src="image.src"
         :alt="image.alt">
-      <div class="louped-area" :style="loupedAreaStyle"></div>
+      <div
+        class="louped-area"
+        :style="loupedAreaStyle"
+        v-if="showLoupedArea"></div>
     </div>
     <div class="picture_louped__louped"></div>
   </div>
@@ -15,6 +20,7 @@
   export default {
   	data(){
   		return {
+  			showLoupedArea: true,
   			origin: {
   				height: undefined,
           width: undefined,
@@ -43,12 +49,25 @@
 				this.origin.width = e.target.clientWidth;
 				this.loupedAreaStyle.top = this.origin.my - parseInt(this.loupedAreaStyle.height) / 2 + 'px';
 				this.loupedAreaStyle.left = this.origin.mx - parseInt(this.loupedAreaStyle.width) / 2 + 'px';
-  			console.log(this.origin.mx / this.origin.width,':',this.origin.my / this.origin.height);
+  			//console.log(this.origin.mx / this.origin.width,':',this.origin.my / this.origin.height);
       },
       init(){
-  			this.loupedAreaStyle.height = '10px';
-  			this.loupedAreaStyle.width = '10px';
+  			this.loupedAreaStyle.height = '100px';
+  			this.loupedAreaStyle.width = '100px';
       }
+    },
+    watch: {
+			//imposing restrictions on loupedArea position
+			//horizontal position
+  		'loupedAreaStyle.left'(newValue){
+  			if( parseInt(newValue) <= 0 ) this.loupedAreaStyle.left = 0;
+  			if( parseInt(newValue) >= (this.origin.width - parseInt(this.loupedAreaStyle.width))) this.loupedAreaStyle.left = this.origin.width - parseInt(this.loupedAreaStyle.width) + 'px';
+  		},
+			//vertical position
+			'loupedAreaStyle.top'(newValue){
+				if( parseInt(newValue) <= 0 ) this.loupedAreaStyle.top = 0;
+				if( parseInt(newValue) >= (this.origin.height - parseInt(this.loupedAreaStyle.height))) this.loupedAreaStyle.top = this.origin.height - parseInt(this.loupedAreaStyle.height) + 'px';
+			}
     },
     mounted(){
   		this.init()
