@@ -14,6 +14,7 @@
         class="louped-area"
         :style="loupedAreaStyle"
         v-if="showLoupedArea">
+        {{scale.current}}x</b>
       </div>
       <div
         class="picture_louped__louped"
